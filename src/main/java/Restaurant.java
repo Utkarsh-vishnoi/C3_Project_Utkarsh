@@ -30,6 +30,15 @@ public class Restaurant {
             return menu;
     }
 
+    public int calculate_order(List<String> itemList) {
+        int cost = 0;
+        for(String itemName : itemList) {
+            Item item = findItemByName(itemName);
+            cost += item.getPrice();
+        }
+        return cost;
+    }
+
     private Item findItemByName(String itemName){
         for(Item item: menu) {
             if(item.getName().equals(itemName))
