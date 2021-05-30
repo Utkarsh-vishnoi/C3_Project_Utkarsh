@@ -4,6 +4,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -59,4 +61,19 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void calculate_order_when_called_with_empty_list_should_return_0() {
+        List<String> itemList = new ArrayList<String>();
+        assertEquals(0, restaurant.calculate_order(itemList));
+    }
+
+    @Test
+    public void calculate_order_when_called_with_2_items_worth_119_and_269_respectively_should_return_388() {
+        List<String> itemList = new ArrayList<String>();
+        itemList.add("Sweet corn soup");
+        itemList.add("Vegetable lasagne");
+        assertEquals(388, restaurant.calculate_order(itemList));
+    }
+
 }
